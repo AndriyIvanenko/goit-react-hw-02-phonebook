@@ -5,8 +5,8 @@ export const StyledForm = styled.form`
   flex-direction: column;
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border: 1px solid #000;
+  border-radius: 2px;
 `;
 
 export const Label = styled.label`
@@ -14,10 +14,17 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  /* &:focus {
+    outline: none;
+  } */
 `;
 
 export const Button = styled.button`
   width: 100px;
   font-size: 12px;
+  margin-top: 20px;
+  &:hover {
+    cursor: pointer;
+  }
 `;

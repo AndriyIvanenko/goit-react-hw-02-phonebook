@@ -5,18 +5,20 @@ import { StyledForm, Label, Input, Button } from './Form.styled';
 class Form extends React.Component {
   state = {
     name: '',
+    number: '',
   };
 
   nameInputId = nanoid();
+  numberInputId = nanoid();
 
   inputChangeHandler = evt => {
-    const { name, value } = evt.currentTarget;
-    this.setState({ [name]: value });
+    const { name, number, value } = evt.currentTarget;
+    this.setState({ [name]: value, [number]: value });
   };
 
   formSubmitHandler = evt => {
     evt.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onFormSubmit(this.state);
     this.formReset();
   };
 
@@ -37,6 +39,18 @@ class Form extends React.Component {
           value={this.state.name}
           onChange={this.inputChangeHandler}
           id={this.nameInputId}
+        />
+
+        <Label htmlFor={this.numberInputId}>Number</Label>
+        <Input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+          value={this.state.number}
+          onChange={this.inputChangeHandler}
+          id={this.numberInputId}
         />
         <Button type="submit">Add contact</Button>
       </StyledForm>
