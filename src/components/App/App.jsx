@@ -1,7 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import Form from 'components/Form/Form';
-import { Contacts } from '../Contacts/Contacts';
+import Contacts from '../Contacts/Contacts';
 import { Section, H1, H2 } from './App.styled';
 import Filter from 'components/Search/Filter';
 
@@ -17,16 +17,27 @@ class PhoneBook extends React.Component {
   };
 
   formSubmitHandler = data => {
+    if (this.state.contacts.find(contact => contact.name === data.name)) {
+      alert(`${data.name} is already in contacts`);
+      return;
+    }
     const newContact = [{}];
+    newContact[0].id = nanoid();
     newContact[0].name = data.name;
     newContact[0].number = data.number;
-    newContact[0].id = nanoid();
     const updatedContacts = this.state.contacts.concat(newContact);
     this.setState({ contacts: updatedContacts });
   };
 
   filterChangeHandler = data => {
     this.setState({ filter: data });
+  };
+
+  deleteContact = data => {
+    const updatedContacts = this.state.contacts.filter(
+      contact => contact.id !== data
+    );
+    this.setState({ contacts: updatedContacts });
   };
 
   filterInputId = nanoid();
@@ -39,6 +50,7 @@ class PhoneBook extends React.Component {
         <H2>Contacts</H2>
         <Filter onFilterChange={this.filterChangeHandler}></Filter>
         <Contacts
+          deleteContact={this.deleteContact}
           contacts={this.state.contacts}
           filter={this.state.filter}
         ></Contacts>

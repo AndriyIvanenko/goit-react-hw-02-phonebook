@@ -7,6 +7,7 @@ export const StyledForm = styled.form`
   padding: 15px;
   border: 1px solid #000;
   border-radius: 2px;
+  width: 270px;
 `;
 
 export const Label = styled.label`

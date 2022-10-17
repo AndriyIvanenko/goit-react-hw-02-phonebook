@@ -10,7 +10,7 @@ class Filter extends React.Component {
   filterChangeHandler = evt => {
     const value = evt.currentTarget.value;
     this.setState({ filter: value });
-    this.props.onFilterChange(this.state.filter);
+    this.props.onFilterChange(value);
   };
 
   filterInputId = nanoid();

@@ -23,7 +23,7 @@ class Form extends React.Component {
   };
 
   formReset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {

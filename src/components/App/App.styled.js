@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  width: 300px;
+  width: fit-content;
 `;
 
 export const H1 = styled.h1`

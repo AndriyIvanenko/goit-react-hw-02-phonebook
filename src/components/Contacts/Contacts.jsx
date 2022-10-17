@@ -1,21 +1,35 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Li } from './Contacts.styled';
+import ContactsItem from 'components/ContactsItem/ContactsItem';
 
-export const Contacts = ({ contacts, filter }) => {
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
-  );
-  // console.log(filteredContacts);
-  return (
-    <ul>
-      {filteredContacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-        </li>
-      ))}
-    </ul>
-  );
-};
+class Contacts extends React.Component {
+  state = {
+    idForDelete: '',
+  };
 
-Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object),
-};
+  filteredContacts = this.props.contacts.filter(contact =>
+    contact.name.toLowerCase().includes(this.props.filter)
+  );
+
+  upDeleteId = data => {
+    // this.setState({ idForDelete: data });
+    this.props.deleteContact(data);
+  };
+
+  render() {
+    return (
+      <ul>
+        {this.filteredContacts.map(contact => (
+          <Li key={contact.id}>
+            <ContactsItem
+              contact={contact}
+              upDeleteId={this.upDeleteId}
+            ></ContactsItem>
+          </Li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+export default Contacts;
