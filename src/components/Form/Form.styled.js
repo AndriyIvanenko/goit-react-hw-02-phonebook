@@ -16,9 +16,6 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   margin-bottom: 5px;
-  /* &:focus {
-    outline: none;
-  } */
 `;
 
 export const Button = styled.button`

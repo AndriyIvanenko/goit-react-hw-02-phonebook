@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: fit-content;
+  margin: auto;
 `;
 
 export const H1 = styled.h1`

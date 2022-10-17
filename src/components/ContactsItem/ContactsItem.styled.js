@@ -5,6 +5,10 @@ export const Contact = styled.div`
   align-items: center;
 `;
 
+export const Name = styled.span`
+  width: 130px;
+`;
+
 export const Button = styled.button`
   margin-left: 20px;
   font-size: 11px;
