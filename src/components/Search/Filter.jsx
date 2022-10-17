@@ -1,6 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { FilterSection, Label } from './Filter.styled';
+import { FilterSection, Label, Input } from './Filter.styled';
 
 class Filter extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class Filter extends React.Component {
     return (
       <FilterSection>
         <Label htmlFor={this.filterInputId}>Find contacts by name</Label>
-        <input
+        <Input
           type="text"
           name="filter"
           id={this.filterInputId}

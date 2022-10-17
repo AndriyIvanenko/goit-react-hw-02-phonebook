@@ -1,36 +1,24 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactsItem.styled';
 
-class ContactsItem extends React.Component {
-  state = {
-    idForDelete: '',
-  };
-
-  //   static defaultProps = {
-  //     contact: {
-  //       id: 'id',
-  //       name: 'name',
-  //       number: 'number',
-  //     },
-  //   };
-
-  changeState = () => {
-    this.setState({ idForDelete: this.props.contact.id });
-    this.props.upDeleteId(this.props.contact.id);
-  };
-
-  render() {
-    return (
-      <Contact>
-        <span>
-          {this.props.contact.name}:&nbsp;&nbsp;{this.props.contact.number}
-        </span>
-        <Button type="button" onClick={this.changeState}>
-          delete
-        </Button>
-      </Contact>
-    );
+export const ContactsItem = ({ contact, throwDeleteId }) => {
+  function setDeleteId() {
+    throwDeleteId(contact.id);
   }
-}
 
-export default ContactsItem;
+  return (
+    <Contact>
+      <span>
+        {contact.name}:&nbsp;&nbsp;{contact.number}
+      </span>
+      <Button type="button" onClick={setDeleteId}>
+        delete
+      </Button>
+    </Contact>
+  );
+};
+
+ContactsItem.propTypes = {
+  contact: PropTypes.object,
+  upDeleteId: PropTypes.func,
+};

@@ -21,6 +21,10 @@ p {
   margin: 0;
 }
 
+ul {
+  padding-left: 20px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
