@@ -4,7 +4,7 @@ import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 
 export const Contacts = ({ contacts, filter, deleteContact }) => {
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   function throwDeleteId(data) {
