@@ -9,18 +9,17 @@ class Contacts extends React.Component {
     deleteContact: function () {},
   };
 
-  filteredContacts = this.props.contacts.filter(contact =>
-    contact.name.toLowerCase().includes(this.props.filter.toLowerCase())
-  );
-
   throwDeleteId = data => {
     this.props.deleteContact(data);
   };
 
   render() {
+    const filteredContacts = this.props.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.props.filter.toLowerCase())
+    );
     return (
       <ul>
-        {this.filteredContacts.map(contact => (
+        {filteredContacts.map(contact => (
           <Li key={contact.id}>
             <ContactsItem
               contact={contact}
